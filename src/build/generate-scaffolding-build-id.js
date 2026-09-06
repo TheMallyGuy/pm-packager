@@ -15,14 +15,16 @@ const files = [
   ...getAllFiles('./src/scaffolding/**/*'),
   ...getAllFiles('./src/addons/**/*'),
   ...getAllFiles('./src/common/**/*'),
-  path.join(root, 'webpack.config.js'),
-  path.join(root, 'package.json'),
-  path.join(root, 'package-lock.json')
+  ...(fs.existsSync(path.join(root, 'rolldown.config.js')) ? [path.join(root, 'rolldown.config.js')] : []),
+  ...(fs.existsSync(path.join(root, 'webpack.config.js')) ? [path.join(root, 'webpack.config.js')] : []),
+  path.join(root, 'package.json')
 ];
 for (const file of files) {
-  const stat = fs.statSync(file);
-  if (!stat.isDirectory()) {
-    hash.update(fs.readFileSync(file, 'utf-8'));
+  if (fs.existsSync(file)) {
+    const stat = fs.statSync(file);
+    if (!stat.isDirectory()) {
+      hash.update(fs.readFileSync(file, 'utf-8'));
+    }
   }
 }
 
