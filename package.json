@@ -48,7 +48,7 @@
         "@rollup/plugin-commonjs": "^29.0.3",
         "@rollup/plugin-node-resolve": "^16.0.3",
         "@rollup/plugin-replace": "^6.0.3",
-        "babel-jest": "^27.5.1",
+        "babel-jest": "^30.5.1",
         "babel-loader": "^8.4.1",
         "copy-webpack-plugin": "^6.4.1",
         "cross-env": "^7.0.3",
